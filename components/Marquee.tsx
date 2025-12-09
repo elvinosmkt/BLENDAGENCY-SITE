@@ -12,8 +12,9 @@ const Marquee: React.FC = () => {
        <div className="flex w-max animate-marquee">
          {[...items, ...items, ...items, ...items].map((item, index) => (
            <div key={index} className="flex items-center gap-8 mx-8">
-             <span className="text-5xl md:text-7xl font-display font-bold text-transparent stroke-text uppercase opacity-30 hover:opacity-100 transition-opacity duration-300 cursor-default whitespace-nowrap" 
-             style={{ WebkitTextStroke: '1px #4b5563' }}>
+             {/* Alterado para ter um contorno branco visível (rgba 255,255,255,0.4) e preenchimento branco ao passar o mouse */}
+             <span className="text-5xl md:text-7xl font-display font-bold text-transparent uppercase hover:text-white transition-colors duration-300 cursor-default whitespace-nowrap" 
+             style={{ WebkitTextStroke: '1px rgba(255, 255, 255, 0.4)' }}>
                {item}
              </span>
              <span className="w-3 h-3 bg-indigo-500 rounded-full shrink-0"></span>
