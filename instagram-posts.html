@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blend Agency - Instagram Posts</title>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            padding: 40px;
+            background: #1a1a1a;
+            font-family: 'Manrope', sans-serif;
+            display: flex;
+            gap: 40px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .post {
+            width: 1080px;
+            height: 1080px;
+            background: #0a0a0a;
+            position: relative;
+            overflow: hidden;
+            border-radius: 0;
+        }
+        
+        /* Post 1 - Transformamos Código em Receita */
+        .post-1 {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 80px;
+        }
+        
+        .post-1 .badge {
+            background: rgba(99, 102, 241, 0.1);
+            border: 1px solid rgba(99, 102, 241, 0.3);
+            color: #818cf8;
+            padding: 12px 24px;
+            border-radius: 50px;
+            font-size: 14px;
+            font-weight: 700;
+            letter-spacing: 0.2em;
+            margin-bottom: 60px;
+            text-transform: uppercase;
+        }
+        
+        .post-1 h1 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 120px;
+            font-weight: 600;
+            line-height: 1.1;
+            color: white;
+            text-align: center;
+            margin: 0 0 60px 0;
+        }
+        
+        .post-1 .gradient-text {
+            background: linear-gradient(135deg, #818cf8, #c084fc, #a78bfa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .post-1 .logo {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 32px;
+            font-weight: 700;
+            color: white;
+            letter-spacing: 0.05em;
+        }
+        
+        /* Background Effects for Post 1 */
+        .post-1::before {
+            content: '';
+            position: absolute;
+            top: 20%;
+            right: -10%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(99, 102, 241, 0.15) 0%, transparent 70%);
+            border-radius: 50%;
+            filter: blur(80px);
+        }
+        
+        .post-1::after {
+            content: '';
+            position: absolute;
+            bottom: -10%;
+            left: -10%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(192, 132, 252, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+            filter: blur(100px);
+        }
+
+        /* Particles */
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: rgba(99, 102, 241, 0.3);
+            border-radius: 50%;
+        }
+        
+        /* Post 2 - Desenvolvimento que Escala */
+        .post-2 {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            padding: 80px;
+        }
+        
+        .post-2 .top {
+            text-align: center;
+            width: 100%;
+        }
+        
+        .post-2 h1 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 100px;
+            font-weight: 700;
+            color: white;
+            margin: 0 0 30px 0;
+            line-height: 1;
+        }
+        
+        .post-2 .subtitle {
+            font-size: 24px;
+            color: #9ca3af;
+            font-weight: 500;
+        }
+        
+        .post-2 .icon-container {
+            width: 300px;
+            height: 300px;
+            background: rgba(99, 102, 241, 0.1);
+            border: 2px solid rgba(99, 102, 241, 0.3);
+            border-radius: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            margin: 40px 0;
+        }
+        
+        .post-2 .code-icon {
+            font-size: 140px;
+            color: #818cf8;
+        }
+        
+        .post-2 .bottom {
+            text-align: center;
+        }
+        
+        .post-2 .logo {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 28px;
+            font-weight: 700;
+            color: white;
+        }
+        
+        /* Post 3 - ROI */
+        .post-3 {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 80px;
+        }
+        
+        .post-3 .logo-top {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 32px;
+            font-weight: 700;
+            color: white;
+            position: absolute;
+            top: 60px;
+            letter-spacing: 0.05em;
+        }
+        
+        .post-3 .roi-number {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 280px;
+            font-weight: 800;
+            background: linear-gradient(135deg, #818cf8, #c084fc);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1;
+            margin: 0;
+            position: relative;
+            text-shadow: 0 0 80px rgba(99, 102, 241, 0.5);
+        }
+        
+        .post-3 .roi-text {
+            font-size: 36px;
+            color: white;
+            font-weight: 600;
+            margin: 40px 0;
+            text-align: center;
+        }
+        
+        .post-3 .stats {
+            display: flex;
+            gap: 40px;
+            font-size: 18px;
+            color: #9ca3af;
+            font-weight: 500;
+        }
+        
+        .post-3::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, rgba(99, 102, 241, 0.2) 0%, transparent 70%);
+            border-radius: 50%;
+            filter: blur(100px);
+        }
+        
+        /* Grid Background */
+        .grid-bg {
+            position: absolute;
+            inset: 0;
+            background-image: 
+                linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+            background-size: 50px 50px;
+            opacity: 0.5;
+        }
+    </style>
+</head>
+<body>
+    <!-- Post 1: Transformamos Código em Receita -->
+    <div class="post post-1">
+        <div class="grid-bg"></div>
+        
+        <!-- Particles -->
+        <div class="particle" style="top: 15%; left: 20%;"></div>
+        <div class="particle" style="top: 25%; left: 80%;"></div>
+        <div class="particle" style="top: 70%; left: 15%;"></div>
+        <div class="particle" style="top: 80%; left: 85%;"></div>
+        <div class="particle" style="top: 40%; left: 90%;"></div>
+        <div class="particle" style="top: 60%; left: 10%;"></div>
+        
+        <div style="position: relative; z-index: 10;">
+            <div class="badge">SOFTWARE HOUSE & GROWTH</div>
+            <h1>
+                Transformamos<br/>
+                CÓDIGO em<br/>
+                <span class="gradient-text">RECEITA</span>
+            </h1>
+            <div class="logo">BLEND.</div>
+        </div>
+    </div>
+    
+    <!-- Post 2: Desenvolvimento que Escala -->
+    <div class="post post-2">
+        <div class="grid-bg"></div>
+        
+        <div class="top">
+            <h1>DESENVOLVIMENTO<br/>QUE ESCALA</h1>
+            <p class="subtitle">Apps nativos • SaaS • Cloud AWS</p>
+        </div>
+        
+        <div class="icon-container">
+            <div class="code-icon">&lt;/&gt;</div>
+        </div>
+        
+        <div class="bottom">
+            <div class="logo">BLEND AGENCY</div>
+        </div>
+    </div>
+    
+    <!-- Post 3: ROI 300% -->
+    <div class="post post-3">
+        <div class="grid-bg"></div>
+        
+        <div style="position: relative; z-index: 10; text-align: center;">
+            <div class="logo-top">BLEND.</div>
+            <h1 class="roi-number">300%</h1>
+            <p class="roi-text">ROI MÉDIO DOS<br/>NOSSOS CLIENTES</p>
+            <div class="stats">
+                <span>50+ projetos</span>
+                <span>•</span>
+                <span>10M+ usuários</span>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
