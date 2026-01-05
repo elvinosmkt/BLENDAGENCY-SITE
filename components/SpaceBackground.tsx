@@ -57,20 +57,34 @@ const SpaceBackground: React.FC = () => {
 
         // Mouse move handler
         const handleMouseMove = (e: MouseEvent) => {
-            setMousePos({ x: e.clientX, y: e.clientY });
+            updatePos(e.clientX, e.clientY);
+        };
 
-            // Add mouse trail stars
+        // Touch move handler
+        const handleTouchMove = (e: TouchEvent) => {
+            if (e.touches.length > 0) {
+                updatePos(e.touches[0].clientX, e.touches[0].clientY);
+            }
+        };
+
+        const updatePos = (x: number, y: number) => {
+            setMousePos({ x, y });
+
+            // Add trail stars (for both mouse and touch)
             for (let i = 0; i < 3; i++) {
                 mouseTrailRef.current.push({
-                    x: e.clientX + (Math.random() - 0.5) * 30,
-                    y: e.clientY + (Math.random() - 0.5) * 30,
+                    x: x + (Math.random() - 0.5) * 30,
+                    y: y + (Math.random() - 0.5) * 30,
                     size: Math.random() * 3 + 1,
                     opacity: 1,
                     life: 1
                 });
             }
         };
+
         window.addEventListener('mousemove', handleMouseMove);
+        window.addEventListener('touchmove', handleTouchMove, { passive: true });
+        window.addEventListener('touchstart', handleTouchMove, { passive: true });
 
         // Animation loop
         let time = 0;
@@ -80,9 +94,9 @@ const SpaceBackground: React.FC = () => {
 
             // Draw nebula effects (gradient blobs)
             const nebulas = [
-                { x: canvas.width * 0.2, y: canvas.height * 0.3, size: 400, color: 'rgba(99, 102, 241, 0.08)' },
-                { x: canvas.width * 0.8, y: canvas.height * 0.6, size: 500, color: 'rgba(192, 132, 252, 0.06)' },
-                { x: canvas.width * 0.5, y: canvas.height * 0.5, size: 600, color: 'rgba(129, 140, 248, 0.04)' }
+                { x: canvas.width * 0.2, y: canvas.height * 0.3, size: canvas.width < 768 ? 200 : 400, color: 'rgba(99, 102, 241, 0.08)' },
+                { x: canvas.width * 0.8, y: canvas.height * 0.6, size: canvas.width < 768 ? 250 : 500, color: 'rgba(192, 132, 252, 0.06)' },
+                { x: canvas.width * 0.5, y: canvas.height * 0.5, size: canvas.width < 768 ? 300 : 600, color: 'rgba(129, 140, 248, 0.04)' }
             ];
 
             nebulas.forEach(nebula => {
@@ -95,7 +109,7 @@ const SpaceBackground: React.FC = () => {
 
             // Draw and update stars
             starsRef.current.forEach((star, index) => {
-                // Parallax effect based on mouse position
+                // Parallax effect based on mouse/touch position
                 const parallaxX = (mousePos.x - canvas.width / 2) * 0.01;
                 const parallaxY = (mousePos.y - canvas.height / 2) * 0.01;
 
@@ -125,7 +139,7 @@ const SpaceBackground: React.FC = () => {
                 }
             });
 
-            // Draw and update mouse trail stars
+            // Draw and update trail stars
             mouseTrailRef.current = mouseTrailRef.current.filter(star => {
                 star.life -= 0.02;
                 star.opacity = star.life;
@@ -161,6 +175,8 @@ const SpaceBackground: React.FC = () => {
         return () => {
             window.removeEventListener('resize', resizeCanvas);
             window.removeEventListener('mousemove', handleMouseMove);
+            window.removeEventListener('touchmove', handleTouchMove);
+            window.removeEventListener('touchstart', handleTouchMove);
             if (animationFrameRef.current) {
                 cancelAnimationFrame(animationFrameRef.current);
             }
