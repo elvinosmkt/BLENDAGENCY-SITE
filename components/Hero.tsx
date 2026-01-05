@@ -32,17 +32,48 @@ const Hero: React.FC = () => {
             <span className="uppercase tracking-[0.2em]">Software House & Growth Partner</span>
           </div>
 
-          {/* Main Heading with Gradient Animation */}
-          <h1 className="font-display font-medium text-5xl md:text-8xl lg:text-[7rem] leading-[1.1] md:leading-[1.1] lg:leading-[1] text-white mb-12 animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
-            Transformamos <span className="text-gray-500 italic font-light relative">
-              código
-              <svg className="absolute -bottom-2 left-0 w-full" height="8" viewBox="0 0 200 8" preserveAspectRatio="none">
+          {/* Main Heading with Letter-by-Letter Reveal */}
+          <h1 className="font-display font-medium text-5xl md:text-8xl lg:text-[7rem] leading-[1.1] md:leading-[1.1] lg:leading-[1] text-white mb-12">
+            {/* Split text into segments to maintain different styles */}
+            <span className="inline-block overflow-hidden align-top">
+              {"Transformamos ".split("").map((char, i) => (
+                <span key={i} className="inline-block animate-reveal shadow-text" style={{ animationDelay: `${i * 0.05}s`, opacity: 0 }}>
+                  {char === " " ? "\u00A0" : char}
+                </span>
+              ))}
+            </span>
+            <span className="text-gray-500 italic font-light relative inline-block">
+              {"código".split("").map((char, i) => (
+                <span key={i} className="inline-block animate-reveal" style={{ animationDelay: `${(13 + i) * 0.05}s`, opacity: 0 }}>
+                  {char}
+                </span>
+              ))}
+              <svg className="absolute -bottom-2 left-0 w-full animate-draw-line" style={{ animationDelay: `${(13 + 6) * 0.05}s` }} height="8" viewBox="0 0 200 8" preserveAspectRatio="none">
                 <path d="M0,4 Q50,0 100,4 T200,4" stroke="rgba(156,163,175,0.3)" strokeWidth="2" fill="none" />
               </svg>
-            </span> em <span className="text-gradient-accent relative inline-block">
-              receita
+            </span>
+            <span className="inline-block">
+              {" em ".split("").map((char, i) => (
+                <span key={i} className="inline-block animate-reveal shadow-text" style={{ animationDelay: `${(19 + i) * 0.05}s`, opacity: 0 }}>
+                  {char === " " ? "\u00A0" : char}
+                </span>
+              ))}
+            </span>
+            <span className="text-gradient-accent relative inline-block">
+              {"receita".split("").map((char, i) => (
+                <span key={i} className="inline-block animate-reveal" style={{ animationDelay: `${(23 + i) * 0.05}s`, opacity: 0 }}>
+                  {char}
+                </span>
+              ))}
               <div className="absolute -inset-1 bg-gradient-to-r from-indigo-500 to-purple-500 blur-xl opacity-20 group-hover:opacity-40 transition-opacity"></div>
-            </span> e escala.
+            </span>
+            <span className="inline-block">
+              {" e escala.".split("").map((char, i) => (
+                <span key={i} className="inline-block animate-reveal shadow-text" style={{ animationDelay: `${(30 + i) * 0.05}s`, opacity: 0 }}>
+                  {char === " " ? "\u00A0" : char}
+                </span>
+              ))}
+            </span>
           </h1>
 
           {/* Description & CTA */}
@@ -87,6 +118,23 @@ const Hero: React.FC = () => {
           25% { transform: translateY(-20px) translateX(10px); }
           50% { transform: translateY(-10px) translateX(-10px); }
           75% { transform: translateY(-30px) translateX(5px); }
+        }
+        @keyframes reveal {
+          0% { opacity: 0; transform: translateY(10px); filter: blur(10px); }
+          100% { opacity: 1; transform: translateY(0); filter: blur(0); }
+        }
+        @keyframes draw-line {
+          0% { width: 0; opacity: 0; }
+          100% { width: 100%; opacity: 1; }
+        }
+        .animate-reveal {
+          animation: reveal 0.4s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+        }
+        .animate-draw-line {
+          animation: draw-line 1.5s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+        }
+        .shadow-text {
+          text-shadow: 0 0 20px rgba(255,255,255,0.1);
         }
       `}</style>
     </section>
