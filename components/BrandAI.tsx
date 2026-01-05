@@ -194,7 +194,6 @@ _Enviado via Quiz Interativo do Site_`;
                   onKeyPress={(e) => e.key === 'Enter' && canProceed && handleNext()}
                   className="w-full bg-black/50 border border-white/10 rounded-lg p-4 text-white text-lg focus:border-indigo-500 focus:outline-none transition-colors placeholder-gray-700"
                   placeholder={currentQuestion.placeholder}
-                  autoFocus
                 />
               )}
 
@@ -231,7 +230,6 @@ _Enviado via Quiz Interativo do Site_`;
                     onChange={(e) => handleInputChange('name', e.target.value)}
                     className="w-full bg-black/50 border border-white/10 rounded-lg p-4 text-white text-lg focus:border-indigo-500 focus:outline-none transition-colors placeholder-gray-700"
                     placeholder="Seu nome completo"
-                    autoFocus
                   />
                   <input
                     type="tel"
