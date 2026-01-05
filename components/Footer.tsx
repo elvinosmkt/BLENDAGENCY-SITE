@@ -113,9 +113,14 @@ const Footer: React.FC = () => {
 
         {/* Bottom Badge */}
         <div className="mt-12 text-center">
-          <p className="text-gray-600 text-xs font-mono">
-            Crafted with ❤️ and ☕ in Curitiba, Brazil
-          </p>
+          <a
+            href="https://www.blendagency.com.br"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-gray-600 text-xs font-mono hover:text-indigo-400 transition-colors inline-flex items-center gap-2"
+          >
+            Desenvolvido por <span className="font-bold">Blend Agency</span>
+          </a>
         </div>
       </div>
     </footer>
